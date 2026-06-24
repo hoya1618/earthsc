@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>역학적 에너지 전환 실험실</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ 중3 과학: 역학적 에너지 전환</h1>
+            <p>물체가 낙하할 때 위치 에너지와 운동 에너지는 어떻게 변할까요?</p>
+        </header>
+
+        <section class="simulation-section">
+            <h2>1. 눈으로 보는 에너지 전환</h2>
+            <div class="sim-container">
+                <div class="drop-zone">
+                    <div id="ball"></div>
+                    <div class="ground">기준면 (바닥)</div>
+                </div>
+                
+                <div class="graph-zone">
+                    <div class="graph-item">
+                        <span>위치 에너지 (Ep)</span>
+                        <div class="bar-container">
+                            <div id="ep-bar" class="bar ep"></div>
+                        </div>
+                    </div>
+                    <div class="graph-item">
+                        <span>운동 에너지 (Ek)</span>
+                        <div class="bar-container">
+                            <div id="ek-bar" class="bar ek"></div>
+                        </div>
+                    </div>
+                    <div class="graph-item total">
+                        <span>역학적 에너지 (Ep + Ek) = <strong id="total-text">일정</strong></span>
+                    </div>
+                    <div class="controls">
+                        <button id="drop-btn" class="btn primary">공 떨어뜨리기</button>
+                        <button id="reset-btn" class="btn secondary">다시 준비</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quiz-section">
+            <h2>2. 개념 확인 퀴즈</h2>
+            
+            <div class="quiz-card">
+                <p class="question">Q1. 공중에서 물체가 자유 낙하할 때 에너지의 변화로 옳은 것은?</p>
+                <div class="options">
+                    <button class="quiz-btn" onclick="checkAnswer(this, false)">① 위치 에너지 증가, 운동 에너지 감소</button>
+                    <button class="quiz-btn" onclick="checkAnswer(this, true)">② 위치 에너지 감소, 운동 에너지 증가</button>
+                    <button class="quiz-btn" onclick="checkAnswer(this, false)">③ 위치 에너지와 운동 에너지 모두 증가</button>
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <p class="question">Q2. 공기 저항이 없을 때, 낙하하는 물체의 '역학적 에너지'는 어떻게 될까요?</p>
+                <div class="options">
+                    <button class="quiz-btn" onclick="checkAnswer(this, true)">① 항상 일정하게 보존된다.</button>
+                    <button class="quiz-btn" onclick="checkAnswer(this, false)">② 낙하할수록 점점 커진다.</button>
+                    <button class="quiz-btn" onclick="checkAnswer(this, false)">③ 낙하할수록 점점 작아진다.</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
