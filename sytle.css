@@ -1,0 +1,55 @@
+// --- 시뮬레이션 로직 ---
+const ball = document.getElementById('ball');
+const epBar = document.getElementById('ep-bar');
+const ekBar = document.getElementById('ek-bar');
+const dropBtn = document.getElementById('drop-btn');
+const resetBtn = document.getElementById('reset-btn');
+
+// 공 떨어뜨리기 버튼 클릭 시
+dropBtn.addEventListener('click', () => {
+    // 1. 공을 바닥으로 이동 (290px 위치)
+    ball.style.top = '290px';
+    
+    // 2. 에너지 그래프 변화 (위치 감소, 운동 증가)
+    epBar.style.width = '0%';
+    ekBar.style.width = '100%';
+    
+    // 3. 떨어지는 동안 버튼 비활성화 방지
+    dropBtn.disabled = true;
+});
+
+// 다시 준비 버튼 클릭 시
+resetBtn.addEventListener('click', () => {
+    // 초기 상태로 원상 복구
+    ball.style.top = '20px';
+    epBar.style.width = '100%';
+    ekBar.style.width = '0%';
+    
+    dropBtn.disabled = false;
+});
+
+// --- 퀴즈 로직 ---
+function checkAnswer(selectedButton, isCorrect) {
+    // 클릭한 버튼이 속한 문제의 모든 보기 가져오기
+    const optionsContainer = selectedButton.parentElement;
+    const allButtons = optionsContainer.querySelectorAll('.quiz-btn');
+    
+    // 모든 버튼 비활성화 (중복 선택 방지)
+    allButtons.forEach(btn => {
+        btn.disabled = true;
+        btn.style.cursor = 'default';
+        
+        // 정답을 맞췄든 틀렸든 선택한 버튼에 색상 표시
+        if (btn === selectedButton) {
+            if (isCorrect) {
+                btn.style.backgroundColor = '#55efc4'; // 정답: 민트색
+                btn.style.borderColor = '#00b894';
+                btn.innerHTML += ' <strong>(⭕ 정답!)</strong>';
+            } else {
+                btn.style.backgroundColor = '#fab1a0'; // 오답: 연한 빨간색
+                btn.style.borderColor = '#e17055';
+                btn.innerHTML += ' <strong>(❌ 다시 생각해봐요)</strong>';
+            }
+        }
+    });
+}
